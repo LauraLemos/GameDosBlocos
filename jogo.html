@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>Minha engine</title>
+    <title>GAME DOS BLOCOS</title>
     <style>
         canvas{
             position: absolute;
@@ -13,115 +13,34 @@
             right: 0px;
             margin: auto;
         }
+       
     </style>
 </head>
 <body>
-    <script>
-        //var d jogo
-        var canvas, ctx, ALTURA, LARGURA, frames=0, maxPulos=3;
-        var chao = {
-            y:550,
-            altura:50,
-            cor:"#A0522D",
-
-            desenha: function(){
-                ctx.fillStyle=this.cor;
-                ctx.fillRect(0, this.y, LARGURA, this.altura);
-            }
-        
-        },
-        bloco = {
-            x:50,
-            y:0,
-            altura:50,
-            largura:50,
-            cor:"#FFFF00",
-            gravidade:1.5,
-            velocidade:0,
-            forcaDoPulo:17,
-            qntPulos:0,
-
-            atualiza: function(){
-                this.velocidade+=this.gravidade;
-                this.y+=this.velocidade;
-
-                if(this.y>chao.y-this.altura){
-                this.y = chao.y - this.altura;
-                this.qntPulos=0;
-                }
-            },
-
-            pula:function(){
-
-                if(this.qntPulos<maxPulos){
-                 this.velocidade = -this.forcaDoPulo;
-                this.qntPulos++;
-                }
+    <script type="text/javascript" src="js/jogo.js"> </script>
     
-            },
-
-            desenha: function(){
-                ctx.fillStyle=this.cor;
-                ctx.fillRect(this.x, this.y, this.largura, this.altura);
-
-        }
-    }
-
-
-        function clique (event){
-            //alert("clicou blz")
-            bloco.pula();
-
-        }
-
-        function main (){
-            ALTURA=window.innerHeight;
-            LARGURA=window.innerWidth;
-
-            if(LARGURA>=500){
-                LARGURA=600;
-                ALTURA=600;
+    <p>GAME DOS BLOCOS
+        <style>
+            p{
+                font-size:20px;
+                font-family: 'Blippo';
+                text-align: center;
             }
-            canvas = document.createElement("canvas");
-            canvas.width=LARGURA;
-            canvas.height=ALTURA;
-            canvas.style.border="1px solid #000"
-
-            ctx=canvas.getContext("2d");
-            document.body.appendChild(canvas);
-
-            document.addEventListener("mousedown", clique);
-
-            roda();
-        }
-
-        function roda (){
-            atualiza();
-            desenha();
-
-            window.requestAnimationFrame(roda); //roda para sempre
-
-        }
-
-        function atualiza (){
-            frames++;
-            bloco.atualiza();
-
-
-        }
-
-        function desenha (){
-            ctx.fillStyle = '#87CEFA';
-            ctx.fillRect(0, 0, LARGURA, ALTURA);
-
-            chao.desenha();
-            bloco.desenha();
-
-           
-        }
-
-        //start no jogo
-        main();
-    </script>
+            .botaoEnviar{
+                width: 350px;
+                padding: 15px 20px;
+                border: 1px solid #eee;
+                border-radius: 6px;
+                background-color: #FCC302;
+                font-size: 18px;
+   
+}
+ </style></p>
+ 
+    <div id="botao">
+        <input type="submit" name="PULAR" value="PULAR" class="botaoEnviar" />
+     </div>
+       
+    </button>
 </body>
-</html>
+       
